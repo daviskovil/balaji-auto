@@ -40,6 +40,14 @@ const jsonLd = {
   image: `${site.url}/images/logo.png`,
   telephone: "+919665155256",
   email: site.emails[1],
+  contactPoint: {
+    "@type": "ContactPoint",
+    name: site.contactName,
+    telephone: "+919665155256",
+    contactType: "customer service",
+    areaServed: "IN",
+    availableLanguage: ["en", "hi", "mr"],
+  },
   address: {
     "@type": "PostalAddress",
     streetAddress: `${site.address.line1}`,

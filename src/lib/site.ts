@@ -6,6 +6,7 @@ export const site = {
   description:
     "Trusted car service, repairs and professional car wash in Rahatani and Pimple Saudagar, Pune. Skilled mechanics, genuine parts and same-day delivery for most services.",
   url: "https://www.balajiauto.in",
+  contactName: "Ranjan Kumar Jena",
   phone: "+91 96651 55256",
   phoneHref: "tel:+919665155256",
   whatsapp: "919665155256",

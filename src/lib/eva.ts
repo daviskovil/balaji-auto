@@ -7,7 +7,7 @@ export type EvaReply = { text: string; links?: EvaLink[]; quick?: string[] };
 
 export const evaQuick = ["Opening hours", "Services", "Book a service", "Location", "Price estimate"];
 
-const callLink: EvaLink = { label: `Call ${site.phone}`, href: site.phoneHref };
+const callLink: EvaLink = { label: `Call ${site.contactName.split(" ")[0]}: ${site.phone}`, href: site.phoneHref };
 const waLink = (text?: string): EvaLink => ({ label: "WhatsApp us", href: whatsappLink(text), external: true });
 const mapLink: EvaLink = { label: "Open in Google Maps", href: site.mapsUrl, external: true };
 const bookLink: EvaLink = { label: "Booking form", href: "/#book" };
@@ -111,7 +111,7 @@ export function evaReply(input: string, now = new Date()): EvaReply {
 
   if (intent === "book") {
     return {
-      text: `Booking is easy! You can:\n• Fill the booking form — it sends your details to us on WhatsApp\n• WhatsApp us directly\n• Call ${site.phone}\n\nWalk-ins are welcome too, but booking means less waiting.`,
+      text: `Booking is easy! You can:\n• Fill the booking form — it sends your details to us on WhatsApp\n• WhatsApp us directly\n• Call ${site.contactName} on ${site.phone}\n\nWalk-ins are welcome too, but booking means less waiting.`,
       links: [bookLink, waLink(`Hi Balaji Auto, I'd like to book${service ? ` ${service.title}` : " a car service"}.`), callLink],
       quick: ["Opening hours", "Location"],
     };
@@ -140,7 +140,7 @@ export function evaReply(input: string, now = new Date()): EvaReply {
       };
     case "contact":
       return {
-        text: `📞 ${site.phone}\n✉️ ${site.emails.join("\n✉️ ")}\n\nYou can also message us on WhatsApp.`,
+        text: `📞 ${site.contactName}: ${site.phone}\n✉️ ${site.emails.join("\n✉️ ")}\n\nYou can also message us on WhatsApp.`,
         links: [callLink, waLink()],
       };
     case "services":

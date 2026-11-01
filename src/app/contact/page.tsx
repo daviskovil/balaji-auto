@@ -6,7 +6,7 @@ import { fullAddress, site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact & Directions",
-  description: `Call ${site.phone} or visit Balaji Auto at ${fullAddress}. Open Mon–Fri 9 AM–9 PM, Sat 9 AM–6 PM.`,
+  description: `Call ${site.contactName} on ${site.phone} or visit Balaji Auto at ${fullAddress}. Open Mon–Fri 9 AM–9 PM, Sat 9 AM–6 PM.`,
 };
 
 export default function ContactPage() {
@@ -27,7 +27,8 @@ export default function ContactPage() {
                 <Navigation className="h-4 w-4" aria-hidden /> Get directions
               </a>
             </InfoRow>
-            <InfoRow icon={Phone} title="Phone">
+            <InfoRow icon={Phone} title="Call">
+              <span className="block font-semibold text-ink">{site.contactName}</span>
               <a href={site.phoneHref} className="hover:text-brand">{site.phone}</a>
             </InfoRow>
             <InfoRow icon={Mail} title="Email">

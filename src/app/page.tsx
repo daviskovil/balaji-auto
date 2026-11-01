@@ -58,7 +58,16 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-wa mt-6 w-full">
+              <a href={site.phoneHref} className="mt-6 flex items-center justify-between gap-3 rounded-lg bg-mist px-4 py-3 text-sm hover:text-brand">
+                <span>
+                  <span className="block text-xs text-muted">Call to book</span>
+                  <span className="font-semibold">{site.contactName}</span>
+                </span>
+                <span className="flex items-center gap-1.5 font-semibold">
+                  <Phone className="h-4 w-4 text-brand" aria-hidden /> {site.phone}
+                </span>
+              </a>
+              <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-wa mt-3 w-full">
                 <MessageCircle className="h-4 w-4" aria-hidden /> Chat on WhatsApp
               </a>
             </div>
@@ -177,11 +186,14 @@ export default function Home() {
               Fill in your details and we&apos;ll confirm your slot on WhatsApp. Prefer to talk? Call us anytime during
               working hours.
             </p>
-            <a href={site.phoneHref} className="mt-6 inline-flex items-center gap-3 font-display text-2xl font-bold hover:text-brand">
+            <a href={site.phoneHref} className="group mt-6 inline-flex items-center gap-3">
               <span className="grid h-11 w-11 place-items-center rounded-full bg-brand text-white">
                 <Phone className="h-5 w-5" aria-hidden />
               </span>
-              {site.phone}
+              <span>
+                <span className="block text-sm font-semibold text-muted">Call {site.contactName}</span>
+                <span className="font-display text-2xl font-bold group-hover:text-brand">{site.phone}</span>
+              </span>
             </a>
           </div>
           <div className="rounded-2xl border border-line bg-white p-6 sm:p-8">

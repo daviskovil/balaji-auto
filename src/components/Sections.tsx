@@ -41,7 +41,7 @@ export function CtaBand() {
         <div>
           <h2 className="font-display text-2xl font-bold sm:text-3xl">Need a quick car service?</h2>
           <p className="mt-2 max-w-xl text-white/90">
-            Call or WhatsApp us to book a slot. Most services are delivered the same day.
+            Call {site.contactName} or WhatsApp us to book a slot. Most services are delivered the same day.
           </p>
         </div>
         <div className="flex flex-wrap gap-3">

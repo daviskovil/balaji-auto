@@ -56,9 +56,12 @@ export default function Footer() {
             </li>
             <li className="flex gap-2">
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
-              <a href={site.phoneHref} className="hover:text-brand">
-                {site.phone}
-              </a>
+              <span>
+                <span className="block text-white">{site.contactName}</span>
+                <a href={site.phoneHref} className="hover:text-brand">
+                  {site.phone}
+                </a>
+              </span>
             </li>
             {site.emails.map((e) => (
               <li key={e} className="flex gap-2">
