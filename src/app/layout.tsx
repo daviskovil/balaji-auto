@@ -4,7 +4,7 @@ import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Eva from "@/components/Eva";
-import { fullAddress, services, site } from "@/lib/site";
+import { fullAddress, owner, services, site } from "@/lib/site";
 
 const inter = Inter({ variable: "--font-inter", subsets: ["latin"] });
 const saira = Saira({ variable: "--font-saira", subsets: ["latin"], weight: ["500", "600", "700", "800"] });
@@ -40,6 +40,12 @@ const jsonLd = {
   image: `${site.url}/images/logo.png`,
   telephone: "+919665155256",
   email: site.emails[1],
+  founder: {
+    "@type": "Person",
+    name: owner.name,
+    jobTitle: owner.role,
+    image: `${site.url}${owner.photo}`,
+  },
   contactPoint: {
     "@type": "ContactPoint",
     name: site.contactName,

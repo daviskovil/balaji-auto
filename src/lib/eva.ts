@@ -1,6 +1,6 @@
 // Eva: a small rule-based assistant. Answers come only from the data in site.ts,
 // so she never invents prices, offers or policies.
-import { fullAddress, services, site, whatsappLink, type Service } from "./site";
+import { fullAddress, owner, services, site, whatsappLink, type Service } from "./site";
 
 export type EvaLink = { label: string; href: string; external?: boolean };
 export type EvaReply = { text: string; links?: EvaLink[]; quick?: string[] };
@@ -24,6 +24,7 @@ const intents: { id: string; words: string[] }[] = [
   { id: "price", words: ["price", "prices", "cost", "costs", "charge", "charges", "rate", "rates", "how much", "estimate", "quote", "fees", "expensive", "cheap"] },
   { id: "services", words: ["services", "service list", "what do you do", "what do you offer", "offer", "offerings", "help with", "work do you do"] },
   { id: "brands", words: ["brand", "brands", "model", "models", "maruti", "suzuki", "hyundai", "honda", "tata", "mahindra", "toyota", "kia", "skoda", "volkswagen", "renault", "nissan", "mg", "ford", "suv", "sedan", "hatchback", "diesel", "petrol", "cng", "ev", "electric"] },
+  { id: "owner", words: ["owner", "owns", "founder", "who runs", "proprietor", "ranjan", "jena", "principal", "mechanic", "mechanics", "experience", "experienced", "expert", "qualified", "about you", "about balaji"] },
   { id: "parts", words: ["genuine", "original", "parts", "spare", "spares", "warranty", "guarantee"] },
   { id: "pickup", words: ["pickup", "pick up", "pick-up", "drop", "doorstep", "home service", "collect"] },
   { id: "payment", words: ["pay", "payment", "upi", "gpay", "phonepe", "paytm", "card", "cash", "online payment"] },
@@ -159,6 +160,12 @@ export function evaReply(input: string, now = new Date()): EvaReply {
       return {
         text: "Most periodic services and car washes are completed the same day. Bigger repairs or body and paint work can take longer — we'll give you a time estimate when we inspect your car.",
         quick: ["Book a service", "Opening hours"],
+      };
+    case "owner":
+      return {
+        text: `Balaji Auto is run by ${owner.name}, our ${owner.role.toLowerCase()}. He has more than 20 years of hands-on experience and was previously the Principal Mechanic at My Car, working on numerous car brands across every service we offer.\n\nYou can call ${owner.firstName} directly on ${site.phone}.`,
+        links: [callLink, { label: "About Ranjan", href: "/about" }],
+        quick: ["Services", "Book a service"],
       };
     case "parts":
       return {

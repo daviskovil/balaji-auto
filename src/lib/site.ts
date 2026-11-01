@@ -30,6 +30,15 @@ export const site = {
   areas: ["Rahatani", "Pimple Saudagar", "Pimple Gurav", "Wakad", "Kalewadi", "Thergaon", "Pimpri-Chinchwad"],
 };
 
+export const owner = {
+  name: "Ranjan Kumar Jena",
+  firstName: "Ranjan",
+  role: "Owner & Principal Mechanic",
+  experience: "20+ years",
+  formerRole: "Former Principal Mechanic at My Car",
+  photo: "/images/ranjan-kumar-jena.jpg",
+};
+
 export const fullAddress = `${site.address.line1}, ${site.address.line2}, ${site.address.city}, ${site.address.state} ${site.address.pin}`;
 
 export function whatsappLink(text = "Hi Balaji Auto, I'd like to book a car service.") {
