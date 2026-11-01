@@ -5,7 +5,7 @@ export const site = {
   tagline: "Car Service, Car Wash & Body Shop",
   description:
     "Trusted car service, repairs and professional car wash in Rahatani and Pimple Saudagar, Pune. Skilled mechanics, genuine parts and same-day delivery for most services.",
-  url: "https://balajiauto.in",
+  url: "https://www.balajiauto.in",
   phone: "+91 96651 55256",
   phoneHref: "tel:+919665155256",
   whatsapp: "919665155256",

@@ -16,6 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Balaji Auto",
   },
   description: site.description,
+  alternates: { canonical: "./" },
   openGraph: {
     title: "Balaji Auto – Car Service, Car Wash & Body Shop",
     description: site.description,
