@@ -35,10 +35,19 @@ export default function Home() {
               <a href={site.phoneHref} className="btn-outline-light">
                 <Phone className="h-4 w-4" aria-hidden /> {site.phone}
               </a>
+              <a
+                href={whatsappLink(undefined, site.whatsapp2)}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-wa"
+                aria-label={`WhatsApp our backup number ${site.phone2}`}
+              >
+                <MessageCircle className="h-4 w-4" aria-hidden /> {site.phone2}
+              </a>
             </div>
             <p className="mt-3 text-sm text-white/60">
-              Can&apos;t get through? Call or WhatsApp our backup number{" "}
-              <a href={site.phone2Href} className="font-semibold text-white hover:text-brand">{site.phone2}</a>
+              Both numbers are on WhatsApp. Main number not connecting? Message the green one, or{" "}
+              <a href={site.phone2Href} className="font-semibold text-white hover:text-brand">call {site.phone2}</a>
             </p>
             <ul className="mt-10 grid max-w-lg grid-cols-2 gap-x-6 gap-y-3 text-sm text-white/80">
               {["All car brands", "Genuine parts", "Same-day delivery", "Transparent pricing"].map((t) => (
