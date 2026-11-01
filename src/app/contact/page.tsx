@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Clock, Mail, MapPin, Navigation, Phone } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
+import GoogleCard from "@/components/GoogleCard";
 import { PageHero } from "@/components/Sections";
 import { fullAddress, site, whatsappLink } from "@/lib/site";
 
@@ -56,6 +57,7 @@ export default function ContactPage() {
                 </span>
               ))}
             </InfoRow>
+            <GoogleCard className="!bg-mist !border-transparent" />
           </div>
 
           <div className="rounded-2xl border border-line p-6 sm:p-8">

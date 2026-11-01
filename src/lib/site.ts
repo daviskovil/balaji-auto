@@ -22,8 +22,10 @@ export const site = {
     state: "Maharashtra",
     pin: "411017",
   },
-  mapsUrl:
-    "https://www.google.com/maps/search/?api=1&query=Balaji+Auto+Car+Service+Car+Wash+Body+Shop+Rahatani+Pune",
+  // Exact Google Business Profile listing (place ID ChIJsbxkEQC5wjsRdlYzGMGlano).
+  mapsUrl: "https://maps.google.com/?cid=8821045068911826550",
+  reviewUrl: "https://search.google.com/local/writereview?placeid=ChIJsbxkEQC5wjsRdlYzGMGlano",
+  googleQr: "/images/google-qr.png",
   mapsEmbed:
     "https://maps.google.com/maps?q=Balaji%20Auto%20Car%20Service%20Sudarshan%20Nagar%20Rahatani%20Pune&z=15&output=embed",
   hours: [

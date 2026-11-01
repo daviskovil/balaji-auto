@@ -1,7 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BadgeCheck, CalendarCheck, CarFront, CheckCircle2, Clock, KeyRound, MessageCircle, Phone, Quote, Star } from "lucide-react";
+import { BadgeCheck, CalendarCheck, CarFront, CheckCircle2, Clock, KeyRound, MessageCircle, Phone, Quote } from "lucide-react";
 import BookingForm from "@/components/BookingForm";
+import GoogleCard from "@/components/GoogleCard";
 import { CtaBand, ServiceCard } from "@/components/Sections";
 import { faqs, highlights, services, site, testimonial, whatsappLink } from "@/lib/site";
 
@@ -161,19 +162,7 @@ export default function Home() {
                 <span className="text-muted"> · {testimonial.place}</span>
               </figcaption>
             </figure>
-            <a
-              href={site.mapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="mt-5 inline-flex items-center gap-2 text-sm font-semibold hover:text-brand"
-            >
-              <span className="flex text-amber-400" aria-hidden>
-                {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-current" />
-                ))}
-              </span>
-              Rated 5.0 on Google — read or leave a review
-            </a>
+            <GoogleCard className="mt-5" />
           </div>
 
           <div>
