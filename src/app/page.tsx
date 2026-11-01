@@ -36,6 +36,10 @@ export default function Home() {
                 <Phone className="h-4 w-4" aria-hidden /> {site.phone}
               </a>
             </div>
+            <p className="mt-3 text-sm text-white/60">
+              Can&apos;t get through? Call or WhatsApp our backup number{" "}
+              <a href={site.phone2Href} className="font-semibold text-white hover:text-brand">{site.phone2}</a>
+            </p>
             <ul className="mt-10 grid max-w-lg grid-cols-2 gap-x-6 gap-y-3 text-sm text-white/80">
               {["All car brands", "Genuine parts", "Same-day delivery", "Transparent pricing"].map((t) => (
                 <li key={t} className="flex items-center gap-2">
@@ -58,15 +62,20 @@ export default function Home() {
                   </div>
                 ))}
               </div>
-              <a href={site.phoneHref} className="mt-6 flex items-center justify-between gap-3 rounded-lg bg-mist px-4 py-3 text-sm hover:text-brand">
+              <div className="mt-6 flex items-center justify-between gap-3 rounded-lg bg-mist px-4 py-3 text-sm">
                 <span>
                   <span className="block text-xs text-muted">Call to book</span>
                   <span className="font-semibold">{site.contactName}</span>
                 </span>
-                <span className="flex items-center gap-1.5 font-semibold">
-                  <Phone className="h-4 w-4 text-brand" aria-hidden /> {site.phone}
+                <span className="grid justify-items-end gap-1 font-semibold">
+                  <a href={site.phoneHref} className="flex items-center gap-1.5 hover:text-brand">
+                    <Phone className="h-4 w-4 text-brand" aria-hidden /> {site.phone}
+                  </a>
+                  <a href={site.phone2Href} className="flex items-center gap-1.5 text-xs text-muted hover:text-brand">
+                    Backup: {site.phone2}
+                  </a>
                 </span>
-              </a>
+              </div>
               <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn-wa mt-3 w-full">
                 <MessageCircle className="h-4 w-4" aria-hidden /> Chat on WhatsApp
               </a>
@@ -195,6 +204,10 @@ export default function Home() {
                 <span className="font-display text-2xl font-bold group-hover:text-brand">{site.phone}</span>
               </span>
             </a>
+            <p className="mt-3 text-sm text-muted">
+              Backup number (call or WhatsApp):{" "}
+              <a href={site.phone2Href} className="font-semibold text-ink hover:text-brand">{site.phone2}</a>
+            </p>
           </div>
           <div className="rounded-2xl border border-line bg-white p-6 sm:p-8">
             <BookingForm />

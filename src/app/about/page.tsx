@@ -133,6 +133,10 @@ export default function AboutPage() {
             <a href={site.phoneHref} className="btn-primary mt-10">
               <Phone className="h-4 w-4" aria-hidden /> Talk to {owner.firstName}: {site.phone}
             </a>
+            <p className="mt-3 text-sm text-muted">
+              Or use the backup number (call or WhatsApp):{" "}
+              <a href={site.phone2Href} className="font-semibold text-ink hover:text-brand">{site.phone2}</a>
+            </p>
           </div>
         </div>
       </section>

@@ -10,6 +10,10 @@ export const site = {
   phone: "+91 96651 55256",
   phoneHref: "tel:+919665155256",
   whatsapp: "919665155256",
+  // Backup number (also on WhatsApp) in case the main one can't be reached.
+  phone2: "+91 88568 05452",
+  phone2Href: "tel:+918856805452",
+  whatsapp2: "918856805452",
   emails: ["services@balajiauto.in", "balajiautoservices5@gmail.com"],
   address: {
     line1: "Lane No. 4, Sunshine Villas, Sudarshan Nagar",
@@ -41,8 +45,8 @@ export const owner = {
 
 export const fullAddress = `${site.address.line1}, ${site.address.line2}, ${site.address.city}, ${site.address.state} ${site.address.pin}`;
 
-export function whatsappLink(text = "Hi Balaji Auto, I'd like to book a car service.") {
-  return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(text)}`;
+export function whatsappLink(text = "Hi Balaji Auto, I'd like to book a car service.", number = site.whatsapp) {
+  return `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 }
 
 export type ServiceIcon =

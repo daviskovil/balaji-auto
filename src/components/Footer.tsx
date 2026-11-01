@@ -58,9 +58,13 @@ export default function Footer() {
               <Phone className="mt-0.5 h-4 w-4 shrink-0 text-brand" aria-hidden />
               <span>
                 <span className="block text-white">{site.contactName}</span>
-                <a href={site.phoneHref} className="hover:text-brand">
+                <a href={site.phoneHref} className="block hover:text-brand">
                   {site.phone}
                 </a>
+                <a href={site.phone2Href} className="block hover:text-brand">
+                  {site.phone2} <span className="text-white/50">(backup)</span>
+                </a>
+                <span className="text-xs text-white/50">Both numbers are on WhatsApp</span>
               </span>
             </li>
             {site.emails.map((e) => (

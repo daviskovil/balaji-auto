@@ -8,7 +8,10 @@ export type EvaReply = { text: string; links?: EvaLink[]; quick?: string[] };
 export const evaQuick = ["Opening hours", "Services", "Book a service", "Location", "Price estimate"];
 
 const callLink: EvaLink = { label: `Call ${site.contactName.split(" ")[0]}: ${site.phone}`, href: site.phoneHref };
+const callBackupLink: EvaLink = { label: `Backup: ${site.phone2}`, href: site.phone2Href };
 const waLink = (text?: string): EvaLink => ({ label: "WhatsApp us", href: whatsappLink(text), external: true });
+const waBackupLink: EvaLink = { label: "WhatsApp backup", href: whatsappLink(undefined, site.whatsapp2), external: true };
+const backupLine = `If that number doesn't connect, use our backup: ${site.phone2} (call or WhatsApp).`;
 const mapLink: EvaLink = { label: "Open in Google Maps", href: site.mapsUrl, external: true };
 const bookLink: EvaLink = { label: "Booking form", href: "/#book" };
 
@@ -19,7 +22,7 @@ const intents: { id: string; words: string[] }[] = [
   { id: "duration", words: ["how long", "same day", "ready", "duration", "how much time", "takes", "delivery", "wait"] },
   { id: "hours", words:["hour", "hours", "timing", "timings", "time", "open", "opening", "close", "closing", "today", "sunday", "saturday", "weekend", "holiday", "now"] },
   { id: "location", words: ["where", "address", "location", "located", "direction", "directions", "map", "reach", "route", "near", "landmark"] },
-  { id: "contact", words: ["phone", "call", "number", "contact", "email", "mail", "whatsapp", "mobile"] },
+  { id: "contact", words: ["phone", "call", "number", "contact", "email", "mail", "whatsapp", "mobile", "backup", "alternate", "another number", "other number", "second number", "not reachable", "not connecting", "not picking"] },
   { id: "book", words: ["book", "booking", "appointment", "slot", "schedule", "reserve", "visit"] },
   { id: "price", words: ["price", "prices", "cost", "costs", "charge", "charges", "rate", "rates", "how much", "estimate", "quote", "fees", "expensive", "cheap"] },
   { id: "services", words: ["services", "service list", "what do you do", "what do you offer", "offer", "offerings", "help with", "work do you do"] },
@@ -112,8 +115,8 @@ export function evaReply(input: string, now = new Date()): EvaReply {
 
   if (intent === "book") {
     return {
-      text: `Booking is easy! You can:\n• Fill the booking form — it sends your details to us on WhatsApp\n• WhatsApp us directly\n• Call ${site.contactName} on ${site.phone}\n\nWalk-ins are welcome too, but booking means less waiting.`,
-      links: [bookLink, waLink(`Hi Balaji Auto, I'd like to book${service ? ` ${service.title}` : " a car service"}.`), callLink],
+      text: `Booking is easy! You can:\n• Fill the booking form — it sends your details to us on WhatsApp\n• WhatsApp us directly\n• Call ${site.contactName} on ${site.phone} (backup: ${site.phone2})\n\nWalk-ins are welcome too, but booking means less waiting.`,
+      links: [bookLink, waLink(`Hi Balaji Auto, I'd like to book${service ? ` ${service.title}` : " a car service"}.`), callLink, callBackupLink],
       quick: ["Opening hours", "Location"],
     };
   }
@@ -132,7 +135,7 @@ export function evaReply(input: string, now = new Date()): EvaReply {
     case "bye":
       return { text: "Goodbye! We look forward to seeing you and your car at Balaji Auto." };
     case "hours":
-      return { text: `${openStatus(now)}\n\nOur hours:\n${hoursText}`, links: [callLink], quick: ["Location", "Book a service"] };
+      return { text: `${openStatus(now)}\n\nOur hours:\n${hoursText}`, links: [callLink, callBackupLink], quick: ["Location", "Book a service"] };
     case "location":
       return {
         text: `We're at:\n${fullAddress}\n\nEasy to reach from Pimple Saudagar, Wakad and Pimple Gurav.`,
@@ -141,8 +144,8 @@ export function evaReply(input: string, now = new Date()): EvaReply {
       };
     case "contact":
       return {
-        text: `📞 ${site.contactName}: ${site.phone}\n✉️ ${site.emails.join("\n✉️ ")}\n\nYou can also message us on WhatsApp.`,
-        links: [callLink, waLink()],
+        text: `📞 ${site.contactName}: ${site.phone}\n📞 Backup: ${site.phone2}\n✉️ ${site.emails.join("\n✉️ ")}\n\nBoth numbers are on WhatsApp. If the main number doesn't connect, please try the backup.`,
+        links: [callLink, callBackupLink, waLink(), waBackupLink],
       };
     case "services":
       return {
@@ -163,8 +166,8 @@ export function evaReply(input: string, now = new Date()): EvaReply {
       };
     case "owner":
       return {
-        text: `Balaji Auto is run by ${owner.name}, our ${owner.role.toLowerCase()}. He has more than 20 years of hands-on experience and was previously the Principal Mechanic at My Car, working on numerous car brands across every service we offer.\n\nYou can call ${owner.firstName} directly on ${site.phone}.`,
-        links: [callLink, { label: "About Ranjan", href: "/about" }],
+        text: `Balaji Auto is run by ${owner.name}, our ${owner.role.toLowerCase()}. He has more than 20 years of hands-on experience and was previously the Principal Mechanic at My Car, working on numerous car brands across every service we offer.\n\nYou can call ${owner.firstName} directly on ${site.phone}. ${backupLine}`,
+        links: [callLink, callBackupLink, { label: "About Ranjan", href: "/about" }],
         quick: ["Services", "Book a service"],
       };
     case "parts":
@@ -186,7 +189,7 @@ export function evaReply(input: string, now = new Date()): EvaReply {
 
   return {
     text: "Sorry, I'm not sure about that one. I can help with services, opening hours, location, prices and booking — or you can reach our team directly.",
-    links: [callLink, waLink()],
+    links: [callLink, waLink(), callBackupLink],
     quick: evaQuick,
   };
 }

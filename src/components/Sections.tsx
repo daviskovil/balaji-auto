@@ -44,9 +44,12 @@ export function CtaBand() {
             Call {site.contactName} or WhatsApp us to book a slot. Most services are delivered the same day.
           </p>
         </div>
-        <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3 lg:shrink-0 lg:flex-nowrap">
           <a href={site.phoneHref} className="btn bg-white text-ink hover:bg-white/90">
             <Phone className="h-4 w-4" aria-hidden /> Call {site.phone}
+          </a>
+          <a href={site.phone2Href} className="btn border border-white/40 text-white hover:bg-white/10">
+            <Phone className="h-4 w-4" aria-hidden /> Backup {site.phone2}
           </a>
           <a href={whatsappLink()} target="_blank" rel="noopener noreferrer" className="btn bg-ink text-white hover:bg-ink-3">
             <MessageCircle className="h-4 w-4" aria-hidden /> WhatsApp

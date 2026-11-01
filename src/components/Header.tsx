@@ -30,7 +30,13 @@ export default function Header() {
             <Clock className="h-3.5 w-3.5 text-brand" aria-hidden />
             Mon–Fri 9 AM – 9 PM · Sat 9 AM – 6 PM · Sun: call to check
           </span>
-          <span>Rahatani · Pimple Saudagar · Pune</span>
+          <span className="flex items-center gap-2">
+            <Phone className="h-3.5 w-3.5 text-brand" aria-hidden />
+            <a href={site.phoneHref} className="hover:text-white">{site.phone}</a>
+            <span className="text-white/40">·</span>
+            <a href={site.phone2Href} className="hover:text-white">{site.phone2}</a>
+            <span className="text-white/50">(Call / WhatsApp)</span>
+          </span>
         </div>
       </div>
 
@@ -86,6 +92,17 @@ export default function Header() {
                   {n.label}
                 </Link>
               ))}
+              <div className="mt-2 grid gap-2 border-t border-line pt-3 pb-1 text-sm">
+                {[
+                  { href: site.phoneHref, num: site.phone, tag: "Main" },
+                  { href: site.phone2Href, num: site.phone2, tag: "Backup" },
+                ].map((p) => (
+                  <a key={p.num} href={p.href} className="flex items-center gap-2 px-2 py-1.5 font-semibold">
+                    <Phone className="h-4 w-4 text-brand" aria-hidden /> {p.num}
+                    <span className="text-xs font-normal text-muted">{p.tag}</span>
+                  </a>
+                ))}
+              </div>
             </div>
           </nav>
         )}

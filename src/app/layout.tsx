@@ -46,14 +46,14 @@ const jsonLd = {
     jobTitle: owner.role,
     image: `${site.url}${owner.photo}`,
   },
-  contactPoint: {
+  contactPoint: [site.phoneHref, site.phone2Href].map((tel) => ({
     "@type": "ContactPoint",
     name: site.contactName,
-    telephone: "+919665155256",
+    telephone: tel.replace("tel:", ""),
     contactType: "customer service",
     areaServed: "IN",
     availableLanguage: ["en", "hi", "mr"],
-  },
+  })),
   address: {
     "@type": "PostalAddress",
     streetAddress: `${site.address.line1}`,
